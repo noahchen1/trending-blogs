@@ -2,7 +2,7 @@ const axios = require('axios')
 const { JSDOM } = require("jsdom");
 const { Readability } = require("@mozilla/readability");
 
-const getContent = async (url: string): Promise<string> => {
+const getContent = async (url: string): Promise<Content> => {
     const res = await axios.get(url);
     const html = res.data;
 
@@ -12,9 +12,12 @@ const getContent = async (url: string): Promise<string> => {
 
     let article = new Readability(dom.window.document).parse();
 
-    return article?.textContent
+    const result: Content = {
+        htmlContent: article?.content,
+        textContent: article?.textContent
+    }
+
+    return result;
 }
 
-
-
-export default getContent
+export default getContent;

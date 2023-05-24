@@ -1,0 +1,1 @@
+export const prompt: string = 'Summarize the article'

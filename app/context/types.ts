@@ -7,6 +7,11 @@ export type SearchContextType = {
     setSearchItem: Dispatch<SetStateAction<SearchItem>>
 };
 
+export type SummaryContextType = {
+    summary: string;
+    setSummary: Dispatch<SetStateAction<string>>
+}
+
 export type Children = {
     children: ReactNode
 }

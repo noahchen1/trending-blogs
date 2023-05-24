@@ -1,5 +1,5 @@
-
 import Link from 'next/link';
+import getDate from '@/lib/getDate';
 import { useSearchProvider } from '../context/SearchProvider';
 
 type PropType = {
@@ -13,18 +13,7 @@ const Blog = ({ article, blogIdx }: PropType): JSX.Element => {
     const imgUrl: string = article.urlToImage;
     const source: string = article.source.name;
     const { searchItem }: {searchItem: SearchItem} = useSearchProvider();
-
-    const getDate = (): string => {
-        const date: Date = new Date(article.publishedAt);
-
-        const options = {
-            month: 'long',
-            day: 'numeric',
-            year: 'numeric'
-        } as const;
-
-        return date.toLocaleDateString('en-US', options);
-    };
+    const date = getDate(article.publishedAt);
 
     return (
         <article className="flex flex-col bg-gray-50">
@@ -36,7 +25,7 @@ const Blog = ({ article, blogIdx }: PropType): JSX.Element => {
                 <h3 className="py-2 text-lg font-semibold leading-snug">{title}</h3>
                 <p>{description}</p>
                 <div className="flex flex-wrap mt-auto justify-between pt-3 space-x-2 text-xs dark:text-gray-400">
-                    <span>{getDate()}</span>
+                    <span>{date}</span>
                     <span>2.1K views</span>
                 </div>
             </div>

@@ -1,6 +1,6 @@
 import './globals.css'
-import SearchBar from './components/SearchBar'
 import { SearchProvider } from './context/SearchProvider'
+import { SummaryProvider } from './context/SummaryProvider'
 
 export const metadata = {
   title: 'Create Next App',
@@ -16,8 +16,9 @@ export default function RootLayout({
     <html lang="en">
       <body className="bg-gray-100 text-gray-800">
         <SearchProvider>
-          <SearchBar />
-          {children}
+          <SummaryProvider>
+            {children}
+          </SummaryProvider>
         </SearchProvider>
       </body>
     </html>
