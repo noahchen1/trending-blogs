@@ -7,23 +7,44 @@ import getPosts from "@/lib/getPosts";
 export default function SearchBar(): JSX.Element {
     const { searchItem, setSearchItem, setResults } = useSearchProvider();
 
+    // useEffect(() => {
+    //     if (!searchItem) return;
+
+    //     const getData: NodeJS.Timeout = setTimeout(async ()=> {
+    //         try {
+    //             const posts: SearchResult = await getPosts(searchItem);
+
+    //             setResults(posts);
+    //         } catch (err) {
+    //             console.error('Error fetching posts:', err);
+    //         }
+    //     }, 1000);
+
+    //     return () => clearTimeout(getData);
+
+
+    // }, [searchItem]);
+
+
     useEffect(() => {
         if (!searchItem) return;
+        const req = { searchStr: searchItem }
 
-        const getData: NodeJS.Timeout = setTimeout(async ()=> {
-            try {
-                const posts: SearchResult = await getPosts(searchItem);
+        const getSummary = async () => {
+                const res = await fetch('http://localhost:3000/api/news', {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(req)
+                });
+                const data = await res.json();
+                
+                setResults(data);
+        };
 
-                setResults(posts);
-            } catch (err) {
-                console.error('Error fetching posts:', err);
-            }
-        }, 1000);
-
-        return () => clearTimeout(getData);
-
-    }, [searchItem]);
-
+        getSummary();
+    }, [searchItem])
 
     return (
         <>

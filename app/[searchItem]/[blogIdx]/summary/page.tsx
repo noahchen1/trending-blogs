@@ -41,7 +41,6 @@ const page = async ({ params: { searchItem, blogIdx } }: Params) => {
 
             return data.summary;
         } catch (error) {
-            console.log(error)
         }
     }
 
