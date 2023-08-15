@@ -71,9 +71,9 @@ This project was built to learn the standard practices of Next.js and TypeScript
 
 ### Installation
 
-1. Get a free NewsAPI key at https://newsapi.org/.
+1. Get a free NewsAPI key at https://newsapi.org/
 
-2. Get a free ChatGPT API Key at https://platform.openai.com/.
+2. Get a free ChatGPT API Key at https://platform.openai.com/
 
 3. Clone the repo
    ```sh
@@ -85,8 +85,8 @@ This project was built to learn the standard practices of Next.js and TypeScript
    ```
 5. Create a .env file and enter your API keys without '
    ```sh
-   NEXT_PUBLIC_NEWS_KEY='YOUR NewsAPI KEY';
-   NEXT_PUBLIC_GPT_KEY='YOUR ChatGPT KEY';
+   NEXT_PUBLIC_NEWS_KEY='YOUR NewsAPI KEY'
+   NEXT_PUBLIC_GPT_KEY='YOUR ChatGPT KEY'
    ```
 6. Run the development server: 
     ```bash
